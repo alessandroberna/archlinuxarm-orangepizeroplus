@@ -1,4 +1,4 @@
-![ArchlinuxARM logo](.github/.img/alarm.png)
+![ArchlinuxARM logo](Assets/alarm.png)
 
 # Prebuilt images and build instructions for the OrangePi Zero Plus
 These images have been created using the [respecitve "scripts"], with a freshly compiled U-boot and ArchLinuxARM's mainline `linux-aarch64` kernel.

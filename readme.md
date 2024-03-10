@@ -1,11 +1,11 @@
-![ArchlinuxARM logo](Assets/alarm.png)
+![ArchlinuxARM logo](assets/alarm.png)
 
 # Prebuilt images and build instructions for the OrangePi Zero Plus
-These images have been created using the [respecitve "scripts"], with a freshly compiled U-boot and ArchLinuxARM's mainline `linux-aarch64` kernel.
+These images have been created using the [respecitve scripts](https://github.com/alessandroberna/archlinuxarm-orangepizeroplus/tree/main/scripts), with a freshly compiled U-boot and ArchLinuxARM's mainline `linux-aarch64` kernel.
 
 Two kinds of images are available:
 - The EXT4 image simply uses a single partition that spans the whole drive.
-- The F2FS image has a 256MB EXT4 `/boot` partition since U-Boot doesn't support this filesystem. LZ4 compression has been enabled, it shouldn't cause too much additional system load and it should grant somewhat improved I/O performance.
+- The F2FS image has a 256MB EXT4 `/boot` partition since U-Boot doesn't support this filesystem. LZ4 compression has been enabled, it should improve the I/O performance with a minimal overhead
 
 Apart from adjusting the mount options and adopting Armbian's sensible defaults, no further modifications have been made, in line with ArchLinux's KISS philosophy.
 The default ArchLinux ARM userspace configuration is thus kept, which means:
@@ -26,12 +26,13 @@ After logging in, initialize the pacman keyring and populate the Arch Linux ARM 
 pacman-key --init
 pacman-key --populate archlinuxarm
 ```
+The images won't be updated frequently, simply run `pacman -Syu` after installing to account for that
 
 ## Quick install:
 ### Linux / OSX CLI
-- Download an image [from the releases page]
-`wget ...`
-- Unpack it: ` `
+- Download an image [from the releases page](https://github.com/alessandroberna/archlinuxarm-orangepizeroplus/releases/tag/latest)
+`wget https://github.com/alessandroberna/archlinuxarm-orangepizeroplus/releases/download/latest/ext4.img.xz`
+- Unpack it: `xz -dv ext4.img.xz`
 - Write the image to your SD Card:
     ```
     # dd if='filename'.img of=/dev/sdX bs=1M status=progress  # on linux
@@ -61,8 +62,3 @@ After downloading the image, you can use a tool like [etcher](https://etcher.bal
 
 ## Manual Building:
 Refer to [this file](manualBuild.md)
-
-
-
-# Resources:
-TBD

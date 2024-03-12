@@ -20,7 +20,7 @@ The default ArchLinux ARM userspace configuration is thus kept, which means:
 
 With this said, you may want to consider enabling ZRAM and storing logs on system RAM, in order to prolong the life of your SD card
 
-After booting, you can log into the system eiter by using the serial port or with SSH with the alarm user.
+After booting, you can log into the system either by using the serial port or with SSH with the alarm user.
 After logging in, initialize the pacman keyring and populate the Arch Linux ARM package signing keys:
 ```
 pacman-key --init

@@ -16,8 +16,8 @@
 # It has no error checking and has various assumptions about its running environment that must be met:
 # - running as root
 # - all needed executables are installed
-# - run in a folder containing Armbian and AlARM images, along with a compiled u-boot for the Opi0+.
-# - /dev/loop0 and /dev/loop1 must not be in use
+# - run in a directory containing the ArchLinuxARM tarball and a compiled u-boot for the Opi0+.
+# - /dev/loop1 must not be in use
 # - (may fail if /tmp is not on tmpfs, losetup/mount commands might get executed while changes are still being synced to the underlying storage)
 # YMMV, you might be better off running the individual commands one by one, adapting them to your environment and looking at their output to catch potential issues
 

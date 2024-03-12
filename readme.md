@@ -1,11 +1,11 @@
 ![ArchlinuxARM logo](assets/alarm.png)
 
 # Prebuilt images and build instructions for the OrangePi Zero Plus
-These images have been created using the [respecitve scripts](https://github.com/alessandroberna/archlinuxarm-orangepizeroplus/tree/main/scripts), with a freshly compiled U-boot and ArchLinuxARM's mainline `linux-aarch64` kernel.
+These images have been created using the [respective scripts](https://github.com/alessandroberna/archlinuxarm-orangepizeroplus/tree/main/scripts), with a freshly compiled U-boot and ArchLinuxARM's mainline `linux-aarch64` kernel.
 
 Two kinds of images are available:
 - The EXT4 image simply uses a single partition that spans the whole drive.
-- The F2FS image has a 256MB EXT4 `/boot` partition since U-Boot doesn't support this filesystem. LZ4 compression has been enabled, it should improve the I/O performance with a minimal overhead
+- The F2FS image has a 256MB EXT4 `/boot` partition since U-Boot doesn't support this filesystem. LZ4 compression has been enabled; it should improve the I/O performance with a minimal overhead
 
 Apart from adjusting the mount options and adopting Armbian's sensible defaults, no further modifications have been made, in line with ArchLinux's KISS philosophy.
 The default ArchLinux ARM userspace configuration is thus kept, which means:
@@ -18,15 +18,15 @@ The default ArchLinux ARM userspace configuration is thus kept, which means:
 - systemd-resolved management of resolv.conf
 - systemd-timesyncd NTP management
 
-With this said, you may want to consider enabling ZRAM and storing logs on system RAM, in order to prolong the life of your SD card
+With that said, you may want to consider enabling ZRAM and storing logs on system RAM, in order to prolong the life of your SD card
 
-After booting, you can log into the system eiter by using the serial port or with SSH with the alarm user.
+After booting, you can log into the system either by using the serial port or via SSH as the alarm user.
 After logging in, initialize the pacman keyring and populate the Arch Linux ARM package signing keys:
 ```
 pacman-key --init
 pacman-key --populate archlinuxarm
 ```
-The images won't be updated frequently, simply run `pacman -Syu` after installing to account for that
+The images won't be updated frequently; simply run `pacman -Syu` after installing to account for that
 
 ## Quick install:
 ### Linux / OSX CLI
@@ -35,7 +35,7 @@ The images won't be updated frequently, simply run `pacman -Syu` after installin
 - Unpack it: `xz -dv ext4.img.xz`
 - Write the image to your SD Card:
     ```
-    # dd if='filename'.img of=/dev/sdX bs=1M status=progress  # on linux
+    # dd if='filename'.img of=/dev/sdX bs=1M status=progress 
     ```
 - Resize the root partition:
     You need to delete the last partition and create a new one in its place, starting at sector `2048` and spanning the whole drive.
@@ -54,11 +54,11 @@ The images won't be updated frequently, simply run `pacman -Syu` after installin
     ```
     > Running the sfdisk commands on the wrong drive will lead to data loss
 
-    > on OS X replace /dev/sdX with /dev/rdiskX
+    > On OS X replace `/dev/sdX` with `/dev/rdiskX`
     > https://daoyuan.li/solution-dd-too-slow-on-mac-os-x/
 
 ### Cross Platform GUI
-After downloading the image, you can use a tool like [etcher](https://etcher.balena.io/)
+After downloading the image, you can use a tool like [Etcher](https://etcher.balena.io/)
 
 ## Manual Building:
 Refer to [this file](manualBuild.md)
